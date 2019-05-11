@@ -2,10 +2,11 @@
 using namespace std;
 
 /*
-    Description: 给出一个数组，和一个目标值，返回数组中两个数之和
-    等于目标值的对应下标
-    Key: 用undered_map存储，遍历数组。
-*/
+ *   Description: 给出一个数组，和一个目标值，返回数组中两个数之和
+ *   等于目标值的对应下标
+ *   Key: 用unordered_map存储，遍历数组。
+ *   Note: unorder_map为无序存储的map，效率更高
+ */
 
 class Solution {
 public:
