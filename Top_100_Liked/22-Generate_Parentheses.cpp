@@ -24,7 +24,7 @@ public:
         if (cur.length() == max*2) {
             res.push_back(cur);
             return;
-        }
+        }   
         if (open < max) {
             backtrack(res, cur+"(", open+1, close, max);
         }
