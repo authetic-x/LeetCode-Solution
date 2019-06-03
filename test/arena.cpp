@@ -7,37 +7,43 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
-class Solution {
-public:
-    int m, n;
-    vector<vector<char>>& v;
-    bool exist(vector<vector<char>>& board, string word) {
-        if (word.length() == 0) return false;
-        m = board.size();
-        n = board[0].size();
-        v = board;
-        for (int i = 0; i < m; i ++ ) {
-            for (int j = 0; j < n; j ++ ) {
-                if (board[i][j] == word[0]) {
-                    if (dfs(0, i, j, word)) {
-                        return true;
-                    }
-                }
+void Swap(int a[], int left, int right) {
+    int mid = (left+right) / 2;
+    if (a[left] < a[mid]) {
+        if (a[mid] < a[right]) {
+            swap(a[left], a[mid]);
+        } else if (a[left] < a[right]) {
+            swap(a[left], a[right]);
+        }
+    } else {
+        if (a[left] > a[right]) {
+            if (a[mid] < a[right]) {
+                swap(a[left], a[right]);
+            } else {
+                swap(a[left], a[mid]);
             }
         }
-        return false;
     }
-    bool dfs(int k, int i, int j, string word) {
-        if (i < 0 || i >= m || j < 0 || j >= n
-            || v[i][j] != word[k]) return false;
-        if (k == word.length()-1) return true;
-        char cur = v[i][j];
-        v[i][j] = '*';
-        bool ans = dfs(k+1, i+1, j, word)
-                    || dfs(k+1, i-1, j, word)
-                    || dfs(k+1, i, j-1, word)
-                    || dfs(k+1, i, j+1, word);
-        v[i][j] = cur;
-        return ans;
+}
+
+int partion(int a[], int left, int right) {
+    Swap(a, left, right);
+    int tmp = a[left];
+    int i = left, j = right;
+    while (i < j) {
+        while (i < j && a[j] >= tmp) j --;
+        if (i < j) a[i] = a[j];
+        while (i < j && a[i] <= tmp) i ++;
+        if (i < j) a[j] = a[i];
     }
-};
+    a[i] = tmp;
+    return i;
+}
+
+void QuickSort(int a[], int left, int right) {
+    if (left < right) {
+        int pivot = partion(a, left, right);
+        QuickSort(a, left, pivot-1);
+        QuickSort(a, pivot+1, right);
+    }
+}
