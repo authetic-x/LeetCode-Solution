@@ -9,10 +9,10 @@ using namespace std;
 struct Edge {
     int u, v;
     int val;
-}
+};
 
 bool cmp(Edge E1, Edge E2) {
-    return E1.val < E2.val
+    return E1.val < E2.val;
 }
 
 const int MAXN = 100;

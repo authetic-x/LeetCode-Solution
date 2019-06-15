@@ -3,7 +3,7 @@ using namespace std;
 
 int m[25][25];
 
-int dfs(int n) {
+int dfs(int n, int i) {
     
 }
 
@@ -14,10 +14,5 @@ int main() {
             cin >> m[i][j];
         }
     }
-    int res = 0;
-    for (int i = 0; i < n; i ++ ) {
-        for (int j = 0; j < n; j ++ ) {
-            
-        }
-    }
+    
 }
