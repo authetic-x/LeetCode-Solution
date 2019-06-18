@@ -1,49 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
-
-void Swap(int a[], int left, int right) {
-    int mid = (left+right) / 2;
-    if (a[left] < a[mid]) {
-        if (a[mid] < a[right]) {
-            swap(a[left], a[mid]);
-        } else if (a[left] < a[right]) {
-            swap(a[left], a[right]);
-        }
-    } else {
-        if (a[left] > a[right]) {
-            if (a[mid] < a[right]) {
-                swap(a[left], a[right]);
-            } else {
-                swap(a[left], a[mid]);
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        if (s.length() <= 1) return 0;
+        vector<int> dp(s.length(), 0);
+        int ans = 0;
+        for (int i = 1; i < s.length(); i ++ ) {
+            if (s[i] == ')') {
+                if (s[i-1] == '(') {
+                    dp[i] = (i-2 >= 0 ? dp[i-2] : 0) + 2; 
+                } else {
+                    if (i-1 - dp[i-1] >= 0 && s[i-1 - dp[i-1]] == '(') {
+                        dp[i] = dp[i-1] + 2 + (i-2-dp[i-1] >= 0 ? dp[i-2-dp[i-1]] : 0);
+                    }
+                }
+                ans = max(ans, dp[i]);
             }
         }
+        return ans;
     }
-}
-
-int partion(int a[], int left, int right) {
-    Swap(a, left, right);
-    int tmp = a[left];
-    int i = left, j = right;
-    while (i < j) {
-        while (i < j && a[j] >= tmp) j --;
-        if (i < j) a[i] = a[j];
-        while (i < j && a[i] <= tmp) i ++;
-        if (i < j) a[j] = a[i];
-    }
-    a[i] = tmp;
-    return i;
-}
-
-void QuickSort(int a[], int left, int right) {
-    if (left < right) {
-        int pivot = partion(a, left, right);
-        QuickSort(a, left, pivot-1);
-        QuickSort(a, pivot+1, right);
-    }
-}
+};
