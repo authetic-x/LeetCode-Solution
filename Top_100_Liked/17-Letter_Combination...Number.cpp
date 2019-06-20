@@ -36,16 +36,21 @@ class Solution1 {
 public:
     vector<string> letterCombinations(string digits) {
         vector<string> res;
-        string tmp = "";
-        
+        if (digits.length() == 0) return res;
+        combination("", digits, 0, res);
+        return res;
     }
-
-    void combination(string tmp, string digits, int offset, 
-                        vector<string> res) {
+private:
+    vector<string> v = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    void combination(string tmp, string &digits, int offset, 
+                        vector<string> &res) {
         if (offset >= digits.length()) {
             res.push_back(tmp);
             return;
         }
-         
+        int index = digits[offset]-'0';
+        for (int i = 0; i < v[index].size(); i ++ ) {
+            combination(tmp+v[index][i], digits, offset+1, res);
+        }
     }
 };
