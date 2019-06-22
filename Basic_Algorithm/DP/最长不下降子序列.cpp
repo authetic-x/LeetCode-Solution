@@ -3,7 +3,7 @@ using namespace std;
 
 /*
  *  Info: 找到一个最长的不下降子序列，可以不连续
- *        用dp时间复杂度为O(n*n)，感觉和暴力没区别
+ *        用dp时间复杂度为O(n*n)，用二叉树搜索的话，可以降到O(n*logn)
  */
 
 int MaxAcendSubsequence(vector<int> s) {
