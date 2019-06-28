@@ -1,24 +1,69 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-public:
-    int longestValidParentheses(string s) {
-        if (s.length() <= 1) return 0;
-        vector<int> dp(s.length(), 0);
-        int ans = 0;
-        for (int i = 1; i < s.length(); i ++ ) {
-            if (s[i] == ')') {
-                if (s[i-1] == '(') {
-                    dp[i] = (i-2 >= 0 ? dp[i-2] : 0) + 2; 
-                } else {
-                    if (i-1 - dp[i-1] >= 0 && s[i-1 - dp[i-1]] == '(') {
-                        dp[i] = dp[i-1] + 2 + (i-2-dp[i-1] >= 0 ? dp[i-2-dp[i-1]] : 0);
-                    }
-                }
-                ans = max(ans, dp[i]);
+struct TreeNode {
+    int val;
+    TreeNode *left, *right;
+};
+
+void Inorder(TreeNode* root) {
+    if (root == nullptr) return;
+    stack<TreeNode*> st;
+    st.push(root);
+    TreeNode* cur = root->left;
+    while (!st.empty()) {
+        while (cur != nullptr) {
+            st.push(cur);
+            cur = cur->left;
+        }
+        if (!st.empty()) {
+            cur = st.top();
+            st.pop();
+            printf("%d ", cur->val);
+            cur = cur->right;
+        }
+    }
+}
+
+void PreOrder(TreeNode* root) {
+    if (root == nullptr) return;
+    stack<TreeNode*> st;
+    st.push(root);
+    printf("%d ", root->val);
+    TreeNode* cur = root->left;
+    while(!st.empty()) {
+        while (cur != nullptr) {
+            printf("%d ", cur->val);
+            st.push(cur);
+            cur = cur->left;
+        }
+        if(!st.empty()) {
+            cur = st.top();
+            st.pop();
+            cur = cur->right;
+        }
+    }
+}
+
+void PostOrder(TreeNode* root) {
+    stack<TreeNode*> st;
+    TreeNode* cur = root;
+    TreeNode* prePop = nullptr;
+    while (cur != nullptr || !st.empty()) {
+        while (cur != nullptr) {
+            st.push(cur);
+            cur = cur->left;
+        }
+        while (!st.empty()) {
+            cur = st.top();
+            if (cur->right == nullptr || cur->right == prePop) {
+                st.pop();
+                printf("%d ", cur->val);
+                prePop = cur;
+            } else {
+                cur = cur->right;
+                break;
             }
         }
-        return ans;
     }
-};
+}

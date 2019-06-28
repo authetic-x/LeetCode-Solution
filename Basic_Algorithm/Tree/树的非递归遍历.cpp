@@ -14,7 +14,7 @@ struct TreeNode {
 void InOrder(TreeNode* root) {
     stack<TreeNode*> st;
     TreeNode* cur = root;
-    while (cur != nullptr && !st.empty()) {
+    while (cur != nullptr || !st.empty()) {
         while (cur != nullptr) {
             st.push(cur);
             cur = cur->left;
@@ -32,7 +32,7 @@ void InOrder(TreeNode* root) {
 void PreOrder(TreeNode* root) {
     stack<TreeNode*> st;
     TreeNode* cur = root;
-    while (cur != nullptr && !st.empty()) {
+    while (cur != nullptr || !st.empty()) {
         while (cur != nullptr) {
             printf("%d ", cur->val);
             st.push(cur);

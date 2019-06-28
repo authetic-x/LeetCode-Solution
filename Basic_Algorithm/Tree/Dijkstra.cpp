@@ -23,7 +23,7 @@ void Dijkstra(int s) {
             }
         }
         if (u == -1) return;
-        visited[j] = true;
+        visited[u] = true;
         // 从这个点去更新周围还未被访问的点
         for (int v = 0; v < n; v ++ ) {
             if (!visited[v] && G[u][v] != INT_MAX) {
