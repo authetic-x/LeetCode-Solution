@@ -12,7 +12,7 @@ int duplicate(int a[], int n) {
         while (a[i] != i) {
             if (a[a[i]] == a[i]) {
                 return a[i];
-            }
+            } 
             swap(a[i], a[a[i]]);
         }
     }
