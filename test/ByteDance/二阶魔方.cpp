@@ -20,23 +20,22 @@ int op2[6][4] = {
     {22,23,21,20}
 };
 
+void op(int a[], int offset, int n) {
+    vector<int> tmp(n);
+    for (int i = 0; i < n; i ++ ) tmp[i] = a[i];
+    for (int i = 0; i < n; i ++ ) {
+        int j = (i+offset)%n;
+        a[j] = tmp[i];
+    }
+}
+
 vector<int> num(24);
 
-void recursiv1(int cnt) {
-    if (cnt == 5) {
-        
-    }
+void recursiv1(int a[], int cnt) {
+    if (cnt == 5) return;
 
     for (int i = 0; i < 6; i ++ ) {
-        int tmp1[8];
-        for (int k = 0; k < 8; k ++ ) tmp1[k] = num[op1[i][k]];
-        for (int j = 0; j < 8; j ++ ) {
-            num[op1[i][(j+2)%8]] = tmp1[j];
-        }
-        for (int k = 0; k < 4; k ++ ) tmp1[k] = num[op2[i][k]];
-        for (int j = 0; j < 4; j ++ ) {
-            num[op2[i][(j+1)%4]] = tmp1[j];
-        }
+        op(op1[i], 2, 8);
         recursiv1(cnt+1);
     }
 }
@@ -47,5 +46,7 @@ int main() {
         cin >> tmp;
         num[i] = tmp;
     }
-
+    vector<int> tmp(24);
+    for (int i = 0; i < 24; i ++ ) tmp[i] = num[i];
+    
 }
