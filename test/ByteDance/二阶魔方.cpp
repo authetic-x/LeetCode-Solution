@@ -36,7 +36,7 @@ void recursiv1(int a[], int cnt) {
 
     for (int i = 0; i < 6; i ++ ) {
         op(op1[i], 2, 8);
-        recursiv1(cnt+1);
+        //recursiv1(cnt+1);
     }
 }
 

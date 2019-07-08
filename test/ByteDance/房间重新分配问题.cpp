@@ -9,12 +9,12 @@ using namespace std;
 
 int main() {
     int n, x;
-    cin >> n, x;
-    vector<int> a(n+1);
+    cin >> n >> x;
+    vector<int> a(n);
     for (int i = 0; i < n; i ++ ) {
         cin >> a[i];
     }
-    x = x-1;
+    x--;
     // 找出房间i
     int roomI;
     int i = (x+1)%n, minn = INT_MAX;
@@ -28,9 +28,10 @@ int main() {
     }
     int p = a[roomI];
     
-    for (int i = 0; i < p; i ++ ) {
-        for (int j = 1; j <= n; j ++ ) a[j]--;
+    for (int i = 0; i < n; i ++ ) {
+        a[i] -= p;
     }
+
     i = x;
     while (i != roomI) {
         a[i]--;
