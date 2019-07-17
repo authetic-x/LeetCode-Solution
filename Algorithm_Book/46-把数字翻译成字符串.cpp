@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+ *  Info: dp, 125343这种数字翻译为字符串有多少种方式，比如12，可以翻译为
+ *        ab或者12对应的那个字母
+ */
+
 int TraslateNum(int n) {
     string s = to_string(n);
     vector<int> dp(s.length()+1, 0);
@@ -14,7 +19,6 @@ int TraslateNum(int n) {
             dp[i] += dp[i+2];
         }
         dp[i] += dp[i+1];
-        ans += dp[i];
     }
-    return ans;
+    return dp[0];
 }

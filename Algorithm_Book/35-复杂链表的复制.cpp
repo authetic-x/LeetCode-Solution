@@ -28,6 +28,7 @@ ListNode* duplicate(ListNode* head) {
         if (pHead->sibling != nullptr) {
             pHead->next->sibling = pHead->sibling->next;
         }
+        pHead = pHead->next->next;
     }
     ListNode* pClone = head->next;
     while (pClone->next != nullptr) {

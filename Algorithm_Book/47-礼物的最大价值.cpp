@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+ *  Info: dp, 二维矩阵每次向右或者向下走，每个格子有不同价值的礼物，
+ *        求可获得的最大价值
+ */
+
 int MaxValue(vector<vector<int>> gift) {
     int m = gift.size();
     if (m == 0) return 0;

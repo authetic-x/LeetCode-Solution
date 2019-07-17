@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+ *  Info: 数字在排序数组中出现的次数，无限二分，直到找到边界为止
+ */
+
 int getFirstK(vector<int> v, int k, int st, int ed) {
     if (st <= ed) {
         int mid = (st + ed) / 2;

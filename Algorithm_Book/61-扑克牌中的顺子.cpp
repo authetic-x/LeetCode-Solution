@@ -14,7 +14,7 @@ bool isContinuous(vector<int> num) {
     while (big < num.size()) {
         if (num[big] == num[small]) return false;
         numGap += (num[big]-num[small]-1);
-        small++, big++;
+        small++, big++; 
     }
     if (numGap <= numZero) return true;
     return false;
