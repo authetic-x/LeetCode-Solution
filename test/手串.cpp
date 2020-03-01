@@ -24,7 +24,7 @@ int main() {
                 if (color[col] == 1 && !visit[col]) {
                     visit[col] = true;
                     cnt++;
-                } else {
+                } else { 
                     color[col] = 1;
                 }
             }
