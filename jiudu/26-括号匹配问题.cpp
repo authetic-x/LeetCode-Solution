@@ -2,6 +2,11 @@
 #include "stack"
 using namespace std;
 
+/*
+    比较巧妙的是插入堆中的是左括号在数组中的下标，
+    这样可以方便的标记出哪些左括号是没有成功匹配的
+*/
+
 stack<int> st;
 char str[110];
 char ans[110];
