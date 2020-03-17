@@ -26,7 +26,7 @@ void DFS(int x, int y, int time) {
         maze[nx][ny] = 'X';
         DFS(nx, ny, time+1);
         maze[nx][ny] = '.';
-    }
+    } 
 }
 
 int main() {

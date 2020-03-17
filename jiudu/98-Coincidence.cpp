@@ -3,9 +3,9 @@
 
 /*
     最长公共子序列类问题
-    思想：dp[i][j] = str1[i]==str2[j] ? dp[i-1][j-1]+1 : 
+    思想：dp[i][j] = str1[i-1]==str2[j-1] ? dp[i-1][j-1]+1 : 
                                         max(dp[i-1][j], dp[i][j-1])
-    注意细节！
+    字符串比较的地方太容易出错了，or just because I'm stupid!
 */
 
 int dp[101][101];
