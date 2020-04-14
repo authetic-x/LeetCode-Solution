@@ -23,7 +23,7 @@ int main() {
         int ans = 0;
         while (q.size() > 1) {
             int a = q.top();
-            q.pop();
+            q.pop(); 
             int b = q.top();
             q.pop();
             ans += a + b;

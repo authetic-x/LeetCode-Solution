@@ -44,6 +44,7 @@ int BFS(int s, int n, int m) {
         a = now.a, b = now.b, c = now.c;
         AtoB(a, s, b, n);
         if (mark[a][b][c] == false) {
+            mark[a][b][c] = true;
             N tmp;
             tmp.init(a, b, c);
             tmp.t = now.t + 1;
@@ -53,6 +54,7 @@ int BFS(int s, int n, int m) {
         a = now.a, b = now.b, c = now.c;
         AtoB(a, s, c, m);
         if (mark[a][b][c] == false) {
+            mark[a][b][c] = true;
             N tmp;
             tmp.init(a, b, c);
             tmp.t = now.t + 1;
@@ -62,6 +64,7 @@ int BFS(int s, int n, int m) {
         a = now.a, b = now.b, c = now.c;
         AtoB(b, n, c, m);
         if (mark[a][b][c] == false) {
+            mark[a][b][c] = true;
             N tmp;
             tmp.init(a, b, c);
             tmp.t = now.t + 1;
@@ -71,6 +74,7 @@ int BFS(int s, int n, int m) {
         a = now.a, b = now.b, c = now.c;
         AtoB(b, n, a, s);
         if (mark[a][b][c] == false) {
+            mark[a][b][c] = true;
             N tmp;
             tmp.init(a, b, c);
             tmp.t = now.t + 1;
@@ -80,6 +84,7 @@ int BFS(int s, int n, int m) {
         a = now.a, b = now.b, c = now.c;
         AtoB(c, m, a, s);
         if (mark[a][b][c] == false) {
+            mark[a][b][c] = true;
             N tmp;
             tmp.init(a, b, c);
             tmp.t = now.t + 1;
@@ -89,6 +94,7 @@ int BFS(int s, int n, int m) {
         a = now.a, b = now.b, c = now.c;
         AtoB(c, m, b, n);
         if (mark[a][b][c] == false) {
+            mark[a][b][c] = true;
             N tmp;
             tmp.init(a, b, c);
             tmp.t = now.t + 1;

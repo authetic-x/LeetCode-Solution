@@ -19,7 +19,7 @@ void init() {
         if (mark[i]) continue;
         prime[primeSize++] = i;
         for (int j = i*i; j <= 100000; j += i) {
-            mark[i] = true;
+            mark[j] = true;
         }
     }
 }
