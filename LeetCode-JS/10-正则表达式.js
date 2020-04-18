@@ -4,6 +4,7 @@
  * @return {boolean}
  */
 var isMatch = function(s, p) {
+    // 当模式串为空时判断结束
     if (p.length === 0) return s.length === 0;
 
     let firstMatch = s.length !== 0 && (s[0] === p[0] || p[0] === '.');
